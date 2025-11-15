@@ -1,7 +1,7 @@
 ---
 mode: "agent"
 tools: ["find_jacoco_path", "analyze_java_code", "generate_test_template","run_maven_tests"," total_coverage", "missing_coverage", "git_status", "git_add_all", "git_commit", "git_push", " git_pull_request"]
-description: "a tool that takes a java file, analyze it, generate test for it,run the tests using mvn test, get the total coverage, and finally extracts the missing coverage "
+description: "AI-powered testing agent that analyzes Java source code, generate test for it,run the tests using mvn test, measures code coverage with JaCoCo, identifies coverage gaps,iteratively improves tests, and automates Git workflows including commits and pull requests with coverage metrics"
 model: 'Gpt-5 mini'
 ---
 
