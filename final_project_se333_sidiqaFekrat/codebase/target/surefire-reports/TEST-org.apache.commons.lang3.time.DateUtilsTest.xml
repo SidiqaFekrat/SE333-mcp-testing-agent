@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="38" failures="12" name="org.apache.commons.lang3.time.DateUtilsTest" time="0.03" errors="5" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="25"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/sidiqafekrat/Downloads/codebase-2"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/sidiqafekrat/Downloads/codebase-2"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="25"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.io.tmpdir" value="/var/folders/96/8x9ps2w52zs_f69wlg_65xpm0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/sidiqafekrat/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="maven.conf" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="69.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="15.6.1"/>
+    <property name="library.jansi.path" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/lib/jansi-native"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/sidiqafekrat"/>
+    <property name="user.timezone" value="America/Chicago"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="25"/>
+    <property name="user.name" value="sidiqafekrat"/>
+    <property name="java.class.path" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/boot/plexus-classworlds-2.9.0.jar"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="apple.awt.application.name" value="Launcher"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="25"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="maven.home" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testParseDateWithLeniency" time="0.003"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddMinutes" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testMonthIterator" time="0.002"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testRoundLang346" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLANG799_DE_OK" time="0.004">
+    <error message="Unable to parse the date: Mi, 09 Apr 2008 23:55:38 GMT" type="java.text.ParseException">java.text.ParseException: Unable to parse the date: Mi, 09 Apr 2008 23:55:38 GMT
+	at org.apache.commons.lang3.time.DateUtils.parseDateWithLeniency(DateUtils.java:390)
+	at org.apache.commons.lang3.time.DateUtils.parseDate(DateUtils.java:290)
+	at org.apache.commons.lang3.time.DateUtils.parseDate(DateUtils.java:267)
+	at org.apache.commons.lang3.time.DateUtilsTest.testLANG799_DE_OK(DateUtilsTest.java:1598)
+</error>
+    <system-err>java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_de with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:176)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:599)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:53)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:39)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getDateFormatData(LocaleData.java:143)
+	at java.base/java.text.DateFormatSymbols.initializeData(DateFormatSymbols.java:745)
+	at java.base/java.text.DateFormatSymbols.&lt;init&gt;(DateFormatSymbols.java:151)
+	at java.base/sun.util.locale.provider.DateFormatSymbolsProviderImpl.getInstance(DateFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DateFormatSymbols.getProviderInstance(DateFormatSymbols.java:357)
+	at java.base/java.text.DateFormatSymbols.getInstance(DateFormatSymbols.java:347)
+	at java.base/java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:629)
+	at java.base/java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:582)
+	at org.apache.commons.lang3.time.DateUtils.parseDateWithLeniency(DateUtils.java:360)
+	at org.apache.commons.lang3.time.DateUtils.parseDate(DateUtils.java:290)
+	at org.apache.commons.lang3.time.DateUtils.parseDate(DateUtils.java:267)
+	at org.apache.commons.lang3.time.DateUtilsTest.testLANG799_DE_OK(DateUtilsTest.java:1598)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray2(ReflectionUtils.java:208)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:158)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:86)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:95)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_de with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 56 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 69
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.&lt;init&gt;(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.&lt;init&gt;(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.&lt;init&gt;(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 57 more
+</system-err>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLANG799_EN_OK" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetMilliseconds" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testTruncate" time="0.002"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIsSameLocalTime_Cal" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddDays" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLANG799_EN_WITH_DE_LOCALE" time="0">
+    <error message="Unable to parse the date: Mi, 09 Apr 2008 23:55:38 GMT" type="java.text.ParseException">java.text.ParseException: Unable to parse the date: Mi, 09 Apr 2008 23:55:38 GMT
+	at org.apache.commons.lang3.time.DateUtils.parseDateWithLeniency(DateUtils.java:390)
+	at org.apache.commons.lang3.time.DateUtils.parseDate(DateUtils.java:290)
+	at org.apache.commons.lang3.time.DateUtilsTest.testLANG799_EN_WITH_DE_LOCALE(DateUtilsTest.java:1623)
+</error>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testRound" time="0.002">
+    <error message="Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null
+	at org.apache.commons.lang3.SystemUtils.isJavaVersionAtLeast(SystemUtils.java:1388)
+	at org.apache.commons.lang3.time.DateUtilsTest.testRound(DateUtilsTest.java:848)
+</error>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testParseDate" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testCeil" time="0.002">
+    <error message="Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null
+	at org.apache.commons.lang3.SystemUtils.isJavaVersionAtLeast(SystemUtils.java:1388)
+	at org.apache.commons.lang3.time.DateUtilsTest.testCeil(DateUtilsTest.java:1427)
+</error>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddSeconds" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddSeconds(DateUtilsTest.java:439)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLANG799_EN_FAIL" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetMinutes" time="0.001">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetMinutes(DateUtilsTest.java:565)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testToCalendar" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddHours" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddHours(DateUtilsTest.java:399)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddWeeks" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddWeeks(DateUtilsTest.java:359)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddYears" time="0.001">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddYears(DateUtilsTest.java:319)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testTruncateLang59" time="0">
+    <error message="Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;org.apache.commons.lang3.JavaVersion.atLeast(org.apache.commons.lang3.JavaVersion)&quot; because &quot;org.apache.commons.lang3.SystemUtils.JAVA_SPECIFICATION_VERSION_AS_ENUM&quot; is null
+	at org.apache.commons.lang3.SystemUtils.isJavaVersionAtLeast(SystemUtils.java:1388)
+	at org.apache.commons.lang3.time.DateUtilsTest.testTruncateLang59(DateUtilsTest.java:1137)
+</error>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIsSameInstant_Date" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLang530" time="0.003"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetSeconds" time="0.001">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetSeconds(DateUtilsTest.java:587)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIsSameInstant_Cal" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddMonths" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddMonths(DateUtilsTest.java:339)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testWeekIterator" time="0.002"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetMonths" time="0.001">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetMonths(DateUtilsTest.java:499)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetDays" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetDays(DateUtilsTest.java:521)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIsSameDay_Date" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIsSameDay_Cal" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testIteratorEx" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testAddMilliseconds" time="0.001">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testAddMilliseconds(DateUtilsTest.java:459)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testConstructor" time="0"/>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetHours" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetHours(DateUtilsTest.java:543)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testSetYears" time="0">
+    <failure message="expected:&lt;4&gt; but was:&lt;11&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;11&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.apache.commons.lang3.time.DateUtilsTest.assertDate(DateUtilsTest.java:632)
+	at org.apache.commons.lang3.time.DateUtilsTest.testSetYears(DateUtilsTest.java:479)
+</failure>
+  </testcase>
+  <testcase classname="org.apache.commons.lang3.time.DateUtilsTest" name="testLANG799_DE_FAIL" time="0.001"/>
+</testsuite>

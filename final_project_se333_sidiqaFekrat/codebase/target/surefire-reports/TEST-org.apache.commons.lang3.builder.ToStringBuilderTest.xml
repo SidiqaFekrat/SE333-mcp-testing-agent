@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="74" failures="0" name="org.apache.commons.lang3.builder.ToStringBuilderTest" time="0.008" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="25"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/sidiqafekrat/Downloads/codebase-2"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/sidiqafekrat/Downloads/codebase-2"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="25"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.io.tmpdir" value="/var/folders/96/8x9ps2w52zs_f69wlg_65xpm0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/sidiqafekrat/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="maven.conf" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="69.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="15.6.1"/>
+    <property name="library.jansi.path" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/lib/jansi-native"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/sidiqafekrat"/>
+    <property name="user.timezone" value="America/Chicago"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="25"/>
+    <property name="user.name" value="sidiqafekrat"/>
+    <property name="java.class.path" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest/boot/plexus-classworlds-2.9.0.jar"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="apple.awt.application.name" value="Launcher"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="25"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="maven.home" value="/Users/sidiqafekrat/Library/Application Support/Code/User/globalStorage/pleiades.java-extension-pack-jdk/maven/latest"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="test_setUpToClass_valid" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testCharArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionHierarchyArrayList" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionNull" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testDoubleArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionBoolean" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testObjectArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testObjectBuild" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionHierarchy" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testSelfInstanceTwoVarsReflectionObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testAppendToStringUsingMultiLineStyle" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testShortArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testBooleanArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testFloatArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testInt" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testByteArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionArrayCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionLongArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testBlank" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testFloat" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testShort" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionArrayArrayCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testByte" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testChar" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testLong" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionFloatArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testLongArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="test_setUpToClass_invalid" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testBoolean" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionDoubleArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionBooleanArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionInteger" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testBooleanArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testFloatArrayArray" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionyteArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionDoubleArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionIntArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testSimpleReflectionStatics" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionStatics" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionLongArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionhortArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testConstructorEx1" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testConstructorEx2" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testConstructorEx3" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionObjectArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionBooleanArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testLongArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testSimpleReflectionObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testShortArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testIntArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testInheritedReflectionStatics" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionByteArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionArrayCycleLevel2" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testAppendToString" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionArrayAndObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testSetDefaultEx" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionCharArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testIntArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testDouble" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testByteArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionShortArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testCharArrayArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testSelfInstanceVarReflectionObjectCycle" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testObject" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testAppendSuper" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionIntArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionCharArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testGetSetDefault" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testInnerClassReflection" time="0.001"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionCharacter" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testDoubleArray" time="0"/>
+  <testcase classname="org.apache.commons.lang3.builder.ToStringBuilderTest" name="testReflectionFloatArrayArray" time="0"/>
+</testsuite>
