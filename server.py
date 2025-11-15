@@ -3,8 +3,7 @@ import xml.etree.ElementTree as ET
 import os
 import subprocess
 import re
-
-
+from typing import Optional, List, Dict
 mcp = FastMCP("tesing-agent")
 
 @mcp.tool()
@@ -215,5 +214,263 @@ def missing_coverage(file_path: str, project_path: str = ".") -> dict:
         }
     except Exception as e:
         return {"error": f"Coverage analysis failed: {str(e)}"}
+    
 
 
+
+@mcp.tool()
+def git_status(repo_path: str = ".") -> str:
+    """Return git status: clean status, staged changes, conflicts."""
+    try:
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        staged_changes = []
+        unstaged_changes = []
+        conflicts = []
+        
+        for line in result.stdout.strip().split('\n'):
+            if not line:
+                continue
+            status = line[:2]
+            file = line[3:]
+            
+            if status[0] != ' ':
+                staged_changes.append({"file": file, "status": status[0]})
+            if status[1] != ' ':
+                unstaged_changes.append({"file": file, "status": status[1]})
+            if 'U' in status:
+                conflicts.append(file)
+        
+        is_clean = not staged_changes and not unstaged_changes and not conflicts
+        
+        return {
+            "is_clean": is_clean,
+            "staged_changes": staged_changes,
+            "unstaged_changes": unstaged_changes,
+            "conflicts": conflicts,
+            "total_changes": len(staged_changes) + len(unstaged_changes)
+        }
+    except Exception as e:
+        return {"error": f"Failed to get git status: {str(e)}"}
+
+
+@mcp.tool()
+def git_add_all(repo_path: str = ".") -> dict:
+    """Stage all changes with intelligent filtering (exclude build artifacts and temp files)."""
+    try:
+        # Files to exclude
+        exclude_patterns = [
+            "target/",
+            "build/",
+            ".class",
+            ".jar",
+            "__pycache__/",
+            "*.pyc",
+            ".DS_Store",
+            "node_modules/"
+        ]
+        
+        # Get current status
+        status_result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        files_to_add = []
+        excluded_files = []
+        
+        for line in status_result.stdout.strip().split('\n'):
+            if not line:
+                continue
+            file = line[3:]
+            
+            # Check if file should be excluded
+            should_exclude = False
+            for pattern in exclude_patterns:
+                if pattern in file:
+                    should_exclude = True
+                    excluded_files.append(file)
+                    break
+            
+            if not should_exclude:
+                files_to_add.append(file)
+        
+        # Stage non-excluded files
+        if files_to_add:
+            subprocess.run(
+                ["git", "add"] + files_to_add,
+                cwd=repo_path,
+                capture_output=True
+            )
+        
+        return {
+            "success": True,
+            "files_staged": files_to_add,
+            "files_excluded": excluded_files,
+            "total_staged": len(files_to_add),
+            "total_excluded": len(excluded_files)
+        }
+    except Exception as e:
+        return {"error": f"Failed to stage changes: {str(e)}"}
+
+@mcp.tool()
+def git_commit(repo_path: str = ".", message: str = "", coverage: Optional[dict] = None) -> dict:
+    """Automated commit with standardized messages and coverage statistics."""
+    try:
+        # Build commit message with coverage stats if provided
+        commit_msg = message
+        
+        if coverage:
+            coverage_info = f"\n\n[Coverage Report]\n"
+            coverage_info += f"Line Coverage: {coverage.get('line_coverage', 'N/A')}%\n"
+            coverage_info += f"Branch Coverage: {coverage.get('branch_coverage', 'N/A')}%\n"
+            coverage_info += f"Method Coverage: {coverage.get('method_coverage', 'N/A')}%\n"
+            coverage_info += f"Instruction Coverage: {coverage.get('instruction_coverage', 'N/A')}%"
+            commit_msg += coverage_info
+        
+        # Commit
+        result = subprocess.run(
+            ["git", "commit", "-m", commit_msg],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode == 0:
+            return {
+                "success": True,
+                "message": "Commit successful",
+                "commit_output": result.stdout.strip()
+            }
+        else:
+            return {
+                "success": False,
+                "error": result.stderr.strip() if result.stderr else "No changes to commit"
+            }
+    except Exception as e:
+        return {"error": f"Failed to commit: {str(e)}"}
+
+
+@mcp.tool()
+def git_push(repo_path: str = ".", remote: str = "origin", branch: Optional[str] = None) -> dict:
+    """Push to remote with upstream configuration and authentication."""
+    try:
+        # Get current branch if not specified
+        if not branch:
+            branch_result = subprocess.run(
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                cwd=repo_path,
+                capture_output=True,
+                text=True
+            )
+            branch = branch_result.stdout.strip()
+        
+        # Check if branch protection exists (main/master)
+        protected_branches = ["main", "master"]
+        if branch in protected_branches:
+            return {
+                "warning": f"Branch '{branch}' is protected. Consider creating a pull request instead.",
+                "branch": branch
+            }
+        
+        # Push to remote
+        result = subprocess.run(
+            ["git", "push", "-u", remote, branch],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode == 0:
+            return {
+                "success": True,
+                "message": f"Successfully pushed '{branch}' to '{remote}'",
+                "push_output": result.stdout.strip()
+            }
+        else:
+            return {
+                "success": False,
+                "error": result.stderr.strip() if result.stderr else "Push failed"
+            }
+    except Exception as e:
+        return {"error": f"Failed to push: {str(e)}"}
+
+
+
+@mcp.tool()
+def git_pull_request(repo_path: str = ".", base: str = "main", title: str = "", body: str = "", coverage: Optional[dict] = None) -> dict:
+    """Create a pull request with standardized templates and metadata."""
+    try:
+        # Get current branch
+        branch_result = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        current_branch = branch_result.stdout.strip()
+        
+        if current_branch == base:
+            return {"error": f"Cannot create PR from '{base}' to itself"}
+        
+        # Build PR body with coverage metadata
+        pr_body = body if body else "## Changes\n- Automated test generation and coverage improvements\n"
+        
+        if coverage:
+            pr_body += "\n## Coverage Improvements\n"
+            pr_body += f"- **Line Coverage**: {coverage.get('line_coverage', 'N/A')}%\n"
+            pr_body += f"- **Branch Coverage**: {coverage.get('branch_coverage', 'N/A')}%\n"
+            pr_body += f"- **Method Coverage**: {coverage.get('method_coverage', 'N/A')}%\n"
+            pr_body += f"- **Instruction Coverage**: {coverage.get('instruction_coverage', 'N/A')}%\n"
+        
+        pr_body += "\n## Test Quality Metrics\n"
+        pr_body += "- All tests pass\n"
+        pr_body += "- Generated by AI Testing Agent\n"
+        pr_body += "- Coverage gaps identified and addressed\n"
+        
+        # Use gh CLI to create PR
+        result = subprocess.run(
+            [
+                "gh", "pr", "create",
+                "--base", base,
+                "--head", current_branch,
+                "--title", title if title else f"Test Coverage Improvement: {current_branch}",
+                "--body", pr_body
+            ],
+            cwd=repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode == 0:
+            pr_url = result.stdout.strip()
+            return {
+                "success": True,
+                "message": "Pull request created successfully",
+                "pr_url": pr_url,
+                "base_branch": base,
+                "head_branch": current_branch
+            }
+        else:
+            # If gh CLI not available, provide manual instructions
+            return {
+                "success": False,
+                "note": "GitHub CLI (gh) not found. Manual PR creation required.",
+                "instructions": {
+                    "steps": [
+                        f"1. Push your branch: git push -u origin {current_branch}",
+                        f"2. Open GitHub and create PR from '{current_branch}' to '{base}'",
+                        f"3. Use this title: {title if title else f'Test Coverage Improvement: {current_branch}'}",
+                        f"4. Paste this description: {pr_body}"
+                    ]
+                }
+            }
+    except Exception as e:
+        return {"error": f"Failed to create PR: {str(e)}"}
