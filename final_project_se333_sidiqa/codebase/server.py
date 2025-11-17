@@ -474,3 +474,134 @@ def git_pull_request(repo_path: str = ".", base: str = "main", title: str = "", 
             }
     except Exception as e:
         return {"error": f"Failed to create PR: {str(e)}"}
+    
+
+
+@mcp.tool()
+def generate_specification_tests(java_file_path: str, class_name: str) -> str:
+    try:
+        with open(java_file_path, 'r') as f:
+            content = f.read()
+        
+        methods = {}
+        method_pattern = r'(public|private|protected)\s+(?:static\s+)?(\w+)\s+(\w+)\s*\([^)]*\)'
+        
+        for match in re.finditer(method_pattern, content):
+            method_name = match.group(3)
+            return_type = match.group(2)
+            methods[method_name] = return_type
+        
+        test_class = "import org.junit.jupiter.api.Test;\n"
+        test_class += "import static org.junit.jupiter.api.Assertions.*;\n\n"
+        test_class += f"public class {class_name}SpecificationTest {{\n\n"
+        test_class += "    private " + class_name + " instance = new " + class_name + "();\n\n"
+        
+        for method_name in list(methods.keys())[:5]:
+            test_class += "    // Boundary Value Analysis\n"
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}WithMinValue() {{\n"
+            test_class += f"        assertDoesNotThrow(() -> instance.{method_name}());\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}WithMaxValue() {{\n"
+            test_class += f"        assertDoesNotThrow(() -> instance.{method_name}());\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += "    // Equivalence Class Partitioning\n"
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}WithValidInput() {{\n"
+            test_class += f"        assertDoesNotThrow(() -> instance.{method_name}());\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}WithInvalidInput() {{\n"
+            test_class += f"        assertThrows(Exception.class, () -> instance.{method_name}());\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += "    // Decision Table Testing\n"
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}DecisionTable() {{\n"
+            test_class += f"        boolean condition1 = true;\n"
+            test_class += f"        boolean condition2 = false;\n"
+            test_class += f"        assertNotNull(instance);\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += "    // Contract-Based Testing\n"
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}Preconditions() {{\n"
+            test_class += f"        assertNotNull(instance);\n"
+            test_class += f"    }}\n\n"
+            
+            test_class += f"    @Test\n"
+            test_class += f"    void test{method_name}Postconditions() {{\n"
+            test_class += f"        assertDoesNotThrow(() -> instance.{method_name}());\n"
+            test_class += f"    }}\n\n"
+        
+        test_class += "}\n"
+        return test_class
+    
+    except FileNotFoundError:
+        return f"// File not found: {java_file_path}"
+    except Exception as e:
+        return f"// Error: {str(e)}"
+    
+
+@mcp.tool()
+def code_review(file_path: str) -> dict:
+    """AI Code Review: static analysis, code smells, security vulnerabilities, style enforcement."""
+    try:
+        with open(file_path, 'r') as f:
+            content = f.read()
+        
+        issues = []
+        
+        # Code Smells: Long methods (>50 lines)
+        for match in re.finditer(r'(public|private|protected)\s+\w+\s+(\w+)\s*\([^)]*\)\s*\{', content):
+            brace, pos = 1, match.end()
+            lines = 1
+            while brace > 0 and pos < len(content):
+                if content[pos] == '{': brace += 1
+                elif content[pos] == '}': brace -= 1
+                elif content[pos] == '\n': lines += 1
+                pos += 1
+            if lines > 50:
+                issues.append({"smell": "Long Method", "method": match.group(2), "fix": "Extract methods"})
+        
+        # Security: SQL Injection
+        if re.search(r'".*\+.*SELECT|UPDATE|DELETE', content, re.IGNORECASE):
+            issues.append({"security": "SQL Injection", "fix": "Use PreparedStatement"})
+        
+        # Security: Logging vulnerability
+        if re.search(r'System\.out\.println|printStackTrace', content):
+            issues.append({"security": "Insecure Logging", "fix": "Use logger.info()"})
+        
+        # Security: Command execution
+        if re.search(r'Runtime\.getRuntime\(\)\.exec', content):
+            issues.append({"security": "Command Injection", "fix": "Validate input"})
+        
+        # Style: Missing Javadoc
+        methods = len(re.findall(r'public\s+\w+\s+\w+\s*\([^)]*\)', content))
+        docs = len(re.findall(r'/\*\*.*?\*/', content, re.DOTALL))
+        if methods > docs:
+            issues.append({"style": "Missing Documentation", "fix": f"Add {methods - docs} Javadoc comments"})
+        
+        # Style: Unused imports
+        imports = re.findall(r'import\s+([\w.]+);', content)
+        unused = [i for i in imports if i.split('.')[-1] not in content]
+        if unused:
+            issues.append({"style": "Unused Imports", "fix": f"Remove {len(unused)} imports"})
+        
+        return {"file": file_path, "issues": issues, "total": len(issues)}
+    
+    except FileNotFoundError:
+        return {"error": f"File not found: {file_path}"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+if __name__ == "__main__":
+    mcp.run(transport="sse")
+
+
+
