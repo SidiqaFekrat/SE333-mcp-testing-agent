@@ -135,14 +135,23 @@ Configure in VS Code:
     
 
 ## TroubleShooting:
-1. Problem: JaCoCo report not found
-   Solution: Run mvn clean test jacoco:report in codebase/
+1. **Problem**: when using uv add mcp[cli] httpx fastmcp and it says "no matches found: mcp[cli]"
 
-2. Problem: MCP server won't start
-   solution: Verify: python3 -c "import fastmcp" works
+   **Solution**: run uv add "mcp[cli]" httpx fastmcp
 
-2. Problem: Tools not showing in Chat
-   Solution: Restart VS Code and reconnect MCP server
+   
+2. **Problem**: JaCoCo report not found
+
+   **Solution**: Run mvn clean test jacoco:report in codebase/
+
+3. **Problem**: MCP server won't start
+
+   **solution**: Verify: python3 -c "import fastmcp" works
+   
+
+5. **Problem**: Tools not showing in Chat
+
+   **Solution**: Restart VS Code and reconnect MCP server
 
 
 
